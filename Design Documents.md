@@ -8,12 +8,46 @@ Describe the purpose of your application. Include information about the theme, w
 
 ### 1.2 Features
 
-Outline the key features of your application:
+### User Registration:
 
-- **User Registration:** Explain how users will sign up and manage their accounts.
-- **Alert System:** Describe how users will receive alerts for the Astronomy Picture of the Day.
-- **NASA API Integration:** Explain how your application will connect to NASA's API to fetch the Astronomy Picture of the Day.
-- **Database Storage:** Detail how the application will store user-selected dates and associated images.
+#### Description:
+Users will be able to create accounts on our platform, allowing them to personalize their experience and receive tailored content.
+
+#### Implementation:
+1. **Sign-up Form:** Users will fill out a registration form with essential details (username, email, password).
+2. **Email Verification:** A verification email will be sent to the provided email address to confirm the user's identity.
+3. **Account Management:** Users can log in, update their profile, and manage their account settings.
+
+### 2. Alert System:
+
+#### Description:
+To keep users engaged, the application will offer an alert system to notify them when a new Astronomy Picture of the Day is available.
+
+#### Implementation:
+1. **User Preferences:** Users can set preferences for the frequency and timing of alerts.
+2. **Push Notifications:** Alerts will be sent as push notifications to the user's device.
+3. **Email Notifications:** An option for users to receive alerts via email.
+
+### 3. NASA API Integration:
+
+#### Description:
+The application will connect to NASA's API to retrieve the Astronomy Picture of the Day, ensuring the content is up-to-date and accurate.
+
+#### Implementation:
+1. **API Key Authentication:** Users will provide their NASA API key during the initial setup.
+2. **API Request:** The application will make a daily request to NASA's API to fetch the Astronomy Picture of the Day.
+3. **Error Handling:** Implement mechanisms to handle API errors and ensure a smooth user experience.
+
+### 4. Database Storage:
+
+#### Description:
+The application will store user-selected dates and associated images to personalize the user experience and allow them to revisit their favorite pictures.
+
+#### Implementation:
+1. **User Data Storage:** User profiles and preferences will be stored in a user database.
+2. **Image Storage:** Images fetched from NASA's API will be stored in a secure and scalable image database.
+3. **Date-Image Mapping:** A mapping system will associate selected dates with the corresponding Astronomy Pictures of the Day.
+
 
 ### 1.3 Technology Stack
 
