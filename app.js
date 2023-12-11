@@ -48,3 +48,4 @@ function mostrarDatos({date, explanation, media_type, title, url }) {
 
 obtenerDatos();
     }
+
