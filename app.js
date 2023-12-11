@@ -1,6 +1,5 @@
 window.addEventListener('load', obtenerDatos);
 
-// Verifica si estamos en el entorno del navegador antes de usar window
 if (typeof window !== 'undefined') {
   window.addEventListener('load', obtenerDatos);
 }
