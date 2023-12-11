@@ -13,7 +13,7 @@ app.listen(port, () => {
 
 // --------------FIRST PART------------------//
 
-window.addEventListener('load', obtenerDatos);
+document.addEventListener('DOMContentLoaded', obtenerDatos);
 
 // Verifica si estamos en el entorno del navegador antes de usar window
 if (typeof window !== 'undefined') {
