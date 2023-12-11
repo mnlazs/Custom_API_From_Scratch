@@ -1,11 +1,10 @@
-window.addEventListener('load',obtenerDatos);
 
 function obtenerDatos () {
 
     const NASA_key = 'GYb0xavvxZOEehQCaSx4YG1wZ9aXoNpdz99nlWqf'
     const ruta = `https://api.nasa.gov/planetary/apod?api_key=${NASA_key}`;
 
-    fectch(ruta)
+    fetch(ruta)
     .then(respuesta => respuesta.json())
     .then(resultado => mostrarDatos(resultado))
 }
@@ -29,5 +28,5 @@ function mostrarDatos({date, explanation, media_type, title, url }) {
     `
       }
 
-
+obtenerDatos();
 }

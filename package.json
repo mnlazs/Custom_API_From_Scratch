@@ -1,0 +1,19 @@
+{
+  "name": "custom_api_from_scratch",
+  "version": "1.0.0",
+  "description": "API personalizada creada desde cero",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnlazs/Custom_API_From_Scratch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mnlazs/Custom_API_From_Scratch/issues"
+  },
+  "homepage": "https://github.com/mnlazs/Custom_API_From_Scratch#readme"
+}
