@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Preferences</title>
+</head>
+<body>
+    <h1>User Preferences</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>PreferenceID</th>
+                <th>UserID</th>
+                <th>FrequencyPreference</th>
+                <th>TimingPreference</th>
+                <th>ReceiveEmailAlerts</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for preference in preferences %}
+                <tr>
+                    <td>{{ preference['PreferenceID'] }}</td>
+                    <td>{{ preference['UserID'] }}</td>
+                    <td>{{ preference['FrequencyPreference'] }}</td>
+                    <td>{{ preference['TimingPreference'] }}</td>
+                    <td>{{ preference['ReceiveEmailAlerts'] }}</td>
+                    <td>{{ preference['CreatedAt'] }}</td>
+                    <td>{{ preference['UpdatedAt'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

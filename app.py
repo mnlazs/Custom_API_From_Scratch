@@ -17,7 +17,7 @@ def get_users():
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM Users")
-    episodes = cursor.fetchall()
+    users = cursor.fetchall()  # Cambiado de 'episodes' a 'users'
     cursor.close()
     conn.close()
 
