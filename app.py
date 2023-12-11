@@ -8,7 +8,7 @@ def get_db_connection():
         host="127.0.0.1",
         user="root",
         passwd="12345678",
-        database="Public_Broadcasting"
+        database="AstronomyAppDB"
     )
     return conn
 
@@ -99,7 +99,7 @@ def get_episodes():
         }
         episodes_list.append(episode_data)
 
-    return render_template('episodes.html', episodes=episodes_list)
+    return render_template('index.html', episodes=episodes_list)
 
 
 if __name__ == '__main__':
