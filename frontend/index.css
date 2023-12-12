@@ -1,0 +1,7 @@
+.form-body {
+    margin: 20px;            /* Sets a margin of 20 pixels on all sides */
+    margin-top: 250px;        /* Sets a margin of 10 pixels only on the top side */
+    margin-right: 15px;      /* Sets a margin of 15 pixels only on the right side */
+    margin-bottom: 10px;     /* Sets a margin of 10 pixels only on the bottom side */
+    margin-left: 15px;       /* Sets a margin of 15 pixels only on the left side */
+}
