@@ -16,8 +16,8 @@ def get_db_connection():
 def get_users():
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Users")
-    users = cursor.fetchall()  # Cambiado de 'episodes' a 'users'
+    cursor.execute("SELECT * FROM users")
+    users = cursor.fetchall()
     cursor.close()
     conn.close()
 
@@ -33,7 +33,7 @@ def get_users():
 
     return render_template('Users.html', users=users_list)
 
-@app.route('/preferences', methods=['GET'])
+@app.route('/UserPreferences', methods=['GET'])
 def get_preferences():
     conn = get_db_connection()
     cursor = conn.cursor()

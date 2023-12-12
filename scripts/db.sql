@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS AstronomyAppDB;
 CREATE DATABASE IF NOT EXISTS AstronomyAppDB;
+
 USE AstronomyAppDB;
 
 -- Script para crear la tabla de usuarios
