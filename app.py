@@ -27,14 +27,11 @@ def get_users():
             'UserID': user[0],
             'Username': user[1],
             'Email': user[2],
-            'VerificationStatus': user[3],
-            'NASA_API_Key': user[4],
-            'CreatedAt': user[5],
-            'UpdatedAt': user[6]
+            'DateOfBirth': user[3]
         }
         users_list.append(user_data)
 
-    return render_template('users.html', users=users_list)
+    return render_template('Users.html', users=users_list)
 
 @app.route('/preferences', methods=['GET'])
 def get_preferences():
@@ -52,13 +49,10 @@ def get_preferences():
             'UserID': preference[1],
             'FrequencyPreference': preference[2],
             'TimingPreference': preference[3],
-            'ReceiveEmailAlerts': preference[4],
-            'CreatedAt': preference[5],
-            'UpdatedAt': preference[6]
         }
         preferences_list.append(preference_data)
 
-    return render_template('preferences.html', preferences=preferences_list)
+    return render_template('UserPreferences.html', preferences=preferences_list)
 
 if __name__ == '__main__':
     app.run(debug=True)

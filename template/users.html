@@ -2,22 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
 </head>
 <body>
     <h1>User List</h1>
-    <table>
+
+    <table border="1">
         <thead>
             <tr>
-                <th>UserID</th>
+                <th>User ID</th>
                 <th>Username</th>
                 <th>Email</th>
-                <th>VerificationStatus</th>
-                <th>NASA_API_Key</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
+                <th>Date of Birth</th>
             </tr>
         </thead>
         <tbody>
@@ -26,10 +23,7 @@
                     <td>{{ user['UserID'] }}</td>
                     <td>{{ user['Username'] }}</td>
                     <td>{{ user['Email'] }}</td>
-                    <td>{{ user['VerificationStatus'] }}</td>
-                    <td>{{ user['NASA_API_Key'] }}</td>
-                    <td>{{ user['CreatedAt'] }}</td>
-                    <td>{{ user['UpdatedAt'] }}</td>
+                    <td>{{ user['DateOfBirth'] }}</td>
                 </tr>
             {% endfor %}
         </tbody>
