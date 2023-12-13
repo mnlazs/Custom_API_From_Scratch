@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const fechaNacimiento = document.getElementById('fechaNacimiento').value;
 
         // Enviar solicitud al backend para obtener la imagen del universo del día de la fecha seleccionada
-        fetch('/obtener_imagen', {
+        fetch('/static/app.js', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
