@@ -60,8 +60,8 @@ def obtener_imagen_usuario():
         url_imagen = obtener_imagen_actual()
     else:
     # Lógica para determinar la fecha correspondiente al día de nacimiento
-        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%Y-%m-%d')
-        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%Y-%m-%d')
+        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%d-%m-%Y')
+        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%d-%m-%Y')
 
         # Obtener la URL de la imagen del universo para la fecha de nacimiento
         url_imagen = obtener_imagen(fecha_nacimiento_str)
