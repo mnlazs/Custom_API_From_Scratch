@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS
 import csv
 import requests
@@ -52,8 +52,8 @@ def obtener_imagen_usuario():
     datos = cargar_datos()
     nombre = request.json['nombre']
     fecha_nacimiento = request.json['fecha_nacimiento']
-    
-    
+
+
     # Si no se proporciona una fecha de nacimiento, usar la fecha actual
     if not fecha_nacimiento:
         url_imagen = obtener_imagen_actual()
@@ -71,6 +71,11 @@ def obtener_imagen_usuario():
     # Responder con la URL de la imagen
     return jsonify({'nombre': nombre, 'url_imagen': url_imagen})
 
+# Route to serve the main page
+@app.route('/')
+def index():
+    # Render the 'index.html' template when accessing the root '/'
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

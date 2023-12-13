@@ -5,3 +5,11 @@
     margin-bottom: 10px;     /* Sets a margin of 10 pixels only on the bottom side */
     margin-left: 15px;       /* Sets a margin of 15 pixels only on the left side */
 }
+
+body {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Imágenes del Universo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Universe Image Inquiry</title>
 </head>
 <body>
-    <h1>Consulta tu Imagen del Universo</h1>
-    <form id="consultaForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+    <h1>Find Your Universe Image</h1>
+    <form id="searchForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+        <label for="birthdate">Birth Date:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
 
-        <button type="submit">Consultar</button>
+        <button type="submit">Search</button>
     </form>
 
-    <div id="resultado">
-        <!-- Aquí se mostrará la imagen -->
+    <div id="result">
+        <!-- The image will be displayed here -->
     </div>
 
-    <script src="static/app.js"></script>
+    <script src="{{ url_for('static', filename='js.app.js') }}"></script>
 </body>
 </html>
