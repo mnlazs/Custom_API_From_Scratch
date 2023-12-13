@@ -21,6 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
           // Mostrar la imagen en el frontend
           resultadoDiv.innerHTML = `<p>${data.nombre}, aquí está tu imagen del universo:</p><img src="${data.url_imagen}" alt="Imagen del Universo">`;
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => console.error('Error en la solicitud de fetch:', error));
   });
 });
