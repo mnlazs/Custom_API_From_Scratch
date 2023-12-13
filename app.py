@@ -5,6 +5,7 @@ import requests
 from datetime import datetime
 
 app = Flask(__name__)
+CORS(app)
 
 # Cargar datos desde el archivo CSV
 def cargar_datos():
