@@ -1,21 +1,16 @@
-DROP DATABASE IF EXISTS AstronomyAppDB;
-CREATE DATABASE IF NOT EXISTS AstronomyAppDB;
+DROP DATABASE IF EXISTS Lost_in_Space;
+CREATE DATABASE IF NOT EXISTS Lost_in_Space;
+USE Lost_in_Space;
 
-USE AstronomyAppDB;
 
--- Script para crear la tabla de usuarios
-CREATE TABLE IF NOT EXISTS Users (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) NOT NULL,
-    DateOfBirth DATE NOT NULL
+-- Crear la tabla para almacenar datos de usuarios
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255),
+    fecha_nacimiento DATE,
+    url_imagen VARCHAR(255)
 );
 
--- Script para crear la tabla de preferencias de usuario
-CREATE TABLE IF NOT EXISTS UserPreferences (
-    PreferenceID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
-    FrequencyPreference VARCHAR(255),
-    TimingPreference VARCHAR(255),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
+-- Insertar datos desde el archivo CSV a la tabla de usuarios
+COPY usuarios(nombre, fecha_nacimiento, url_imagen)
+FROM '/data/db.csv' DELIMITER ',' CSV HEADER;
