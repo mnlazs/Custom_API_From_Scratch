@@ -3,9 +3,40 @@ from flask_cors import CORS
 import csv
 import requests
 from datetime import datetime
+import mysql.connector
 
 app = Flask(__name__)
-CORS(app)
+
+def get_db_connection():
+    conn = mysql.connector.connect(
+        host="127.0.0.1",
+        user="root",
+        passwd="12345678",
+        database="Lost_in_Space"
+    )
+    return conn
+
+@app.route('/tabla', methods=['POST'])
+def insert_user():
+    try:
+        data = request.json  # Usa request.json en lugar de request.data
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # Utiliza parámetros de consulta para evitar la inyección de SQL
+        cursor.execute("INSERT INTO usuarios (nombre, fecha_nacimiento, url_image) VALUES (%s, %s, %s)",
+                       (data.get('name'), data.get('nacimiento'), data.get('url')))
+
+        conn.commit()  # Asegúrate de hacer commit después de la inserción
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({'message': 'Usuario insertado correctamente'})
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+
 
 # Cargar datos desde el archivo CSV
 def cargar_datos():
@@ -18,7 +49,7 @@ def cargar_datos():
 
 # Obtener la imagen del universo para la fecha actual desde la API de la NASA
 def obtener_imagen_actual():
-    fecha_actual = datetime.now().strftime('%Y-%m-%d')
+    fecha_actual = datetime.now().strftime('%m-%d-%Y')
     return obtener_imagen(fecha_actual)
 
 
@@ -60,8 +91,8 @@ def obtener_imagen_usuario():
         url_imagen = obtener_imagen_actual()
     else:
     # Lógica para determinar la fecha correspondiente al día de nacimiento
-        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%d-%m-%Y')
-        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%d-%m-%Y')
+        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%Y-%m-%d')
+        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%Y-%m-%d')
 
         # Obtener la URL de la imagen del universo para la fecha de nacimiento
         url_imagen = obtener_imagen(fecha_nacimiento_str)
