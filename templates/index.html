@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
     <title>Consulta de Imágenes del Universo</title>
     <style>
         body {
@@ -16,19 +17,22 @@
     
         }
     </style>
+<script type="module" src="pages.js"></script>
 </head>
 <body>
-    <h1>Consulta tu Imagen del Universo</h1>
-    <form id="consultaForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-
-        <button type="submit">Consultar</button>
-    </form>
-
+    <h1 class="header">Consulta tu Imagen del Universo</h1>
+    <div class="form-container">
+        <h2>Search</h2>
+        <form id="consultaForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+    
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+    
+            <button type="submit">Consultar</button>
+        </form>
+    </div>
     <div id="resultado">
         <!-- Aquí se mostrará la imagen -->
     </div>

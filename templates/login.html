@@ -4,27 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="static/styles.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        body {
+        background-image: url(/templates/html_pictures/360_F_572233127_jynQmlurqQLN5RJbD3xFen8xKBXnspIY.jpg);
+        background-repeat: no-repeat;
+        background-size: cover; /* Use cover to ensure the background covers the entire viewport */
+        background-position: center; /* Center the background image */
+        background-position-y: 0;
+        color: aqua;
+        }        
+    </style>
+    <script type="module" src="pages.js"></script>
 </head>
 <body>
-    <div class="login-container">
+    <div class="form-container">
         <h2>Login</h2>
         <form action="/login" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required aria-required="true">
+                <input type="text" id="username" name="username" required aria-required="false">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required aria-required="true">
+                <input type="password" id="password" name="password" required aria-required="false">
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" onclick="switchtosearch()" >Login</button>
             <div id="error-message" style="display:none;">Invalid username or password.</div>
         </form>
         <a href="/forgot-password">Forgot Password?</a>
     </div>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required aria-required="false">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required aria-required="false">
+            </div>
+            <button type="submit" onclick="switchtosearch()" >Signup</button>
+        </form>
+    </div>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+    function switchtosearch() {
+    window.location.href = "/templates/index.html";
+    }
+    </script>
 </body>
 </html>

@@ -1,16 +1,7 @@
-body {
 
-    margin: 20px;            /* Sets a margin of 20 pixels on all sides */
-    margin-top: 250px;        /* Sets a margin of 10 pixels only on the top side */
-    margin-right: 15px;      /* Sets a margin of 15 pixels only on the right side */
-    margin-bottom: 10px;     /* Sets a margin of 10 pixels only on the bottom side */
-    margin-left: 15px;       /* Sets a margin of 15 pixels only on the left side */
-    background-image: url('/static/images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* background-attachment: fixed; */
+
+.header {
+    position: relative;
 }
 
 .form-body {
@@ -28,18 +19,18 @@ body {
 }
 
 /* Center the login-container both vertically and horizontally */
-.login-container {
+.form-container {
     width: 300px; /* or your desired width */
     margin: 0 auto; /* horizontally center the container */
-    position: absolute;
+    position: inherit;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the container */
     padding: 20px;
     background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
     border-radius: 5px; /* Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
+
 
 /* Style the form elements */
 .form-group {
