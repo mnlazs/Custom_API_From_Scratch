@@ -6,6 +6,7 @@ from datetime import datetime
 import mysql.connector
 
 app = Flask(__name__)
+CORS(app)
 
 def get_db_connection():
     conn = mysql.connector.connect(
@@ -25,7 +26,7 @@ def insert_user():
 
         # Utiliza parámetros de consulta para evitar la inyección de SQL
         cursor.execute("INSERT INTO usuarios (nombre, fecha_nacimiento, url_image) VALUES (%s, %s, %s)",
-                       (data.get('name'), data.get('nacimiento'), data.get('url')))
+                (data.get('name'), data.get('nacimiento'), data.get('url')))
 
         conn.commit()  # Asegúrate de hacer commit después de la inserción
 
@@ -35,7 +36,6 @@ def insert_user():
         return jsonify({'message': 'Usuario insertado correctamente'})
     except Exception as e:
         return jsonify({'error': str(e)})
-
 
 
 # Cargar datos desde el archivo CSV
@@ -56,9 +56,23 @@ def obtener_imagen_actual():
 def obtener_imagen(fecha):
     api_key = 'kpzn2IRF9yVR653LJN6WPZJu7dlGZoqI8BD0gnxd'
     url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={fecha}'
-    response = requests.get(url)
-    data = response.json()
-    return data['url']
+    try:
+        response = requests.get(url)
+        response.raise_for_status() # Esto lanzará un error si la solicitud falla
+        data = response.json()
+        return data.get('url') 
+    except request.RequestException as e:
+        print(f"Error al obtener la imagen: {e}")
+        return None
+    
+    # Comprobar si 'url' está en la respuesta
+    imagen_url = data.get('url')
+    if imagen_url:
+        return imagen_url
+    else:
+        # Manejar el caso en que 'url' no esté disponible
+        # Devolver None o un mensaje de error
+        return None
 
 # Actualizar datos del usuario en el archivo CSV
 def actualizar_datos_csv(nombre, fecha_nacimiento, url_imagen):
@@ -82,17 +96,20 @@ def actualizar_datos_csv(nombre, fecha_nacimiento, url_imagen):
 @app.route('/obtener_imagen', methods=['POST'])
 def obtener_imagen_usuario():
     datos = cargar_datos()
-    nombre = request.json['nombre']
-    fecha_nacimiento = request.json['fecha_nacimiento']
+    nombre = request.json.get('nombre')
+    fecha_nacimiento = request.json.get('fecha_nacimiento')
     
-    
+    if nombre is None or fecha_nacimiento is None:
+    # Maneja el caso donde falta información
+        return jsonify({'error': 'Falta nombre o fecha de nacimiento'}), 400
+
     # Si no se proporciona una fecha de nacimiento, usar la fecha actual
     if not fecha_nacimiento:
         url_imagen = obtener_imagen_actual()
     else:
     # Lógica para determinar la fecha correspondiente al día de nacimiento
-        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%Y-%m-%d')
-        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%Y-%m-%d')
+        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%d-%m-%Y')
+        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%d-%m-%Y')
 
         # Obtener la URL de la imagen del universo para la fecha de nacimiento
         url_imagen = obtener_imagen(fecha_nacimiento_str)
@@ -105,4 +122,4 @@ def obtener_imagen_usuario():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

@@ -7,7 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const nombre = document.getElementById('nombre').value;
       const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+      
+      
+      fetch('/ruta', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ clave: 'valor' })
+      });
 
+      
         // Enviar solicitud al backend para obtener la imagen del universo del día de la fecha seleccionada
         fetch('/obtener_imagen', {
           method: 'POST',
