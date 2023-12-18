@@ -1,7 +1,92 @@
 body {
+
     margin: 20px;            /* Sets a margin of 20 pixels on all sides */
     margin-top: 250px;        /* Sets a margin of 10 pixels only on the top side */
     margin-right: 15px;      /* Sets a margin of 15 pixels only on the right side */
     margin-bottom: 10px;     /* Sets a margin of 10 pixels only on the bottom side */
     margin-left: 15px;       /* Sets a margin of 15 pixels only on the left side */
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* background-attachment: fixed; */
+}
+
+.form-body {
+    margin-top: 250px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+/* Apply basic reset to padding and margin for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Center the login-container both vertically and horizontally */
+.login-container {
+    width: 300px; /* or your desired width */
+    margin: 0 auto; /* horizontally center the container */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the container */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Style the form elements */
+.form-group {
+    margin-bottom: 20px; /* Space out form elements */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px; /* Space between label and input */
+    color: #333; /* Dark grey color for text */
+    font-weight: bold; /* Make labels bold */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 3px; /* Slightly rounded borders for inputs */
+    font-size: 16px; /* Increase font size for readability */
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none; /* Remove default border */
+    border-radius: 3px;
+    background-color: #5cb85c; /* Green background for the button */
+    color: white; /* White text color */
+    font-size: 16px;
+    cursor: pointer; /* Cursor changes to a pointer when hovering over the button */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+button[type="submit"]:hover {
+    background-color: #4cae4c; /* Darker green background on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%; /* Make the container take up most of the screen */
+        margin-top: 50px; /* Less margin on the top */
+    }
+
+    .form-body {
+        margin-top: 20px; /* Less margin at the top for small screens */
+    }
 }
