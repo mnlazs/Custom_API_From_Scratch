@@ -49,7 +49,7 @@ def cargar_datos():
 
 # Obtener la imagen del universo para la fecha actual desde la API de la NASA
 def obtener_imagen_actual():
-    fecha_actual = datetime.now().strftime('%m-%d-%Y')
+    fecha_actual = datetime.now().strftime('%Y-%m-%d')
     return obtener_imagen(fecha_actual)
 
 
