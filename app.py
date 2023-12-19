@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import csv
 import requests
 from datetime import datetime
 import mysql.connector
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/obtener_imagen": {"origins": "*"}})
 
 def get_db_connection():
     conn = mysql.connector.connect(
@@ -61,7 +61,7 @@ def obtener_imagen(fecha):
         response.raise_for_status() # Esto lanzará un error si la solicitud falla
         data = response.json()
         return data.get('url') 
-    except request.RequestException as e:
+    except requests.RequestException as e:
         print(f"Error al obtener la imagen: {e}")
         return None
     
@@ -93,15 +93,22 @@ def actualizar_datos_csv(nombre, fecha_nacimiento, url_imagen):
             writer.writerow({'nombre': nombre, 'fecha_nacimiento': fecha_nacimiento, 'url_imagen': url_imagen})
 
 # Endpoint para obtener la imagen del universo basada en la fecha de nacimiento
-@app.route('/obtener_imagen', methods=['POST'])
-def obtener_imagen_usuario():
+@app.route('/obtener_imagen_actual', methods=['GET','POST'])
+@cross_origin()
+def obtener_imagen_actual():
     datos = cargar_datos()
     nombre = request.json.get('nombre')
     fecha_nacimiento = request.json.get('fecha_nacimiento')
-    
+    data = request.json
+    print(data)
+        
     if nombre is None or fecha_nacimiento is None:
     # Maneja el caso donde falta información
-        return jsonify({'error': 'Falta nombre o fecha de nacimiento'}), 400
+        response = jsonify({'error': 'Falta nombre o fecha de nacimiento'}), 400
+        return response
+
+
+    
 
     # Si no se proporciona una fecha de nacimiento, usar la fecha actual
     if not fecha_nacimiento:
