@@ -1,9 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS, cross_origin
 import csv
 import requests
 from datetime import datetime
 import mysql.connector
+
 
 app = Flask(__name__)
 CORS(app, resources={r"/obtener_imagen": {"origins": "*"}})
@@ -16,6 +17,10 @@ def get_db_connection():
         database="Lost_in_Space"
     )
     return conn
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/tabla', methods=['POST'])
 def insert_user():
@@ -57,10 +62,14 @@ def obtener_imagen(fecha):
     api_key = 'kpzn2IRF9yVR653LJN6WPZJu7dlGZoqI8BD0gnxd'
     url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}&date={fecha}'
     try:
+        print ('obtener imagen')
         response = requests.get(url)
         response.raise_for_status() # Esto lanzará un error si la solicitud falla
         data = response.json()
-        return data.get('url') 
+        imagen = data.get('url')
+        print ('inside of obtener_image: ', imagen)
+        
+        return (imagen) 
     except requests.RequestException as e:
         print(f"Error al obtener la imagen: {e}")
         return None
@@ -107,26 +116,23 @@ def obtener_imagen_actual():
         response = jsonify({'error': 'Falta nombre o fecha de nacimiento'}), 400
         return response
 
-
-    
-
     # Si no se proporciona una fecha de nacimiento, usar la fecha actual
     if not fecha_nacimiento:
         url_imagen = obtener_imagen_actual()
     else:
     # Lógica para determinar la fecha correspondiente al día de nacimiento
-        fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%d-%m-%Y')
-        fecha_nacimiento_str = fecha_nacimiento_dt.strftime('%d-%m-%Y')
+        # fecha_nacimiento_dt = datetime.strptime(fecha_nacimiento, '%y-%m-%d')
+        # fecha = fecha_nacimiento_dt.strftime('%y-%m-%d')
 
         # Obtener la URL de la imagen del universo para la fecha de nacimiento
-        url_imagen = obtener_imagen(fecha_nacimiento_str)
+        url_imagen = obtener_imagen(fecha_nacimiento)
 
     # Actualizar datos del usuario en el archivo CSV
-    actualizar_datos_csv(nombre, fecha_nacimiento_str, url_imagen)
+    actualizar_datos_csv(nombre, fecha_nacimiento, url_imagen)
 
     # Responder con la URL de la imagen
     return jsonify({'nombre': nombre, 'url_imagen': url_imagen})
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True, port=8000)

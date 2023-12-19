@@ -19,9 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       
         // Enviar solicitud al backend para obtener la imagen del universo del día de la fecha seleccionada
-        URL = "http://127.0.0.1:5000/obtener_imagen_actual"
+        URL = "http://127.0.0.1:8000/obtener_imagen_actual"
         fetch(URL, {
-          mode: 'no-cors',
           method: 'POST',
           headers: {
               'Accept': 'application/json, text/plain, */*',
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.json())
       .then(data => {
           // Mostrar la imagen en el frontend
-          resultadoDiv.innerHTML = `<p>${data.nombre}, aquí está tu imagen del universo:</p><img src="${data.fecha_nacimiento}" alt="Imagen del Universo">`;
+          resultadoDiv.innerHTML = `<p>${data.nombre}, aquí está tu imagen del universo:</p><img src="${data.url_imagen}" alt="Imagen del Universo">`;
       })
       .catch(error => console.error('Error en la solicitud de fetch:', error));
   });
