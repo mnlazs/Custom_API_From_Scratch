@@ -11,14 +11,31 @@
 }
 /* Estilo del cuerpo del documento */
 body {
+    background-image: url('/static/html_pictures/360_F_572233127_jynQmlurqQLN5RJbD3xFen8xKBXnspIY.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Use cover to ensure the background covers the entire viewport */
+    background-position: center; /* Center the background image */
+    background-position-y: 0;
     font-family: 'upheavtt', sans-serif;
-    background-color: black; /* Fondo negro */
     color: aqua; /* Color de texto */
     margin: 20px;
     margin-top: 250px;
     margin-right: 15px;
     margin-bottom: 10px;
     margin-left: 15px;
+}
+
+/* Center the login-container both vertically and horizontally */
+.form-container {
+    width: 300px; /* or your desired width */
+    margin: 0 auto; /* horizontally center the container */
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
 }
 
 /* Estilo para los contenedores de formularios */

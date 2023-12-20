@@ -6,36 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let's discover what the universe looked like when you were born</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="static/styles.css">
-    <style>
-        body {
-        background-image: url(/templates/html_pictures/360_F_572233127_jynQmlurqQLN5RJbD3xFen8xKBXnspIY.jpg);
-        background-repeat: no-repeat;
-        background-size: cover; /* Use cover to ensure the background covers the entire viewport */
-        background-position: center; /* Center the background image */
-        background-position-y: 0;
-        color: aqua;
-        }
-    </style>
-<script type="module" src="pages.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- <script type="module" src="{{ url_for('static', filename='pages.js') }}"></script> -->
 </head>
 <body>
     <h1>Let's discover what the universe looked like when you were born</h1>
-    <form id="consultaForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-
-        <button type="submit">Consultar</button>
-    </form>
-
+    <div class="form-container">
+        <h2>Search</h2>
+        <form id="consultaForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            <button type="submit">Consultar</button>
+        </form>
+    </div>
     <div id="resultado">
         <!-- Aquí se mostrará la imagen -->
     </div>
-
-    <script src="app.js"></script>
-
+    <!-- <script src="app.js"></script> -->
 </body>
 </html>
