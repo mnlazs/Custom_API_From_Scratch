@@ -76,8 +76,8 @@ def insert_user():
 - /obtener_imagen_actual: GET/POST endpoint for fetching current or specific date universe images.
 
 
-
 ## Technologies Used
+
 **Flask:** For creating the backend server and API. 🐍
 **JavaScrip:t** To handle user interactions on the frontend. 📜
 **MySQL:** For database management. 🛢️🔍
@@ -85,5 +85,9 @@ def insert_user():
 
 
 
+## Autores:
+* [Dae Thomas](https://github.com/daeshov) - @dae-thomas 
+* [Manuel Zambrado](https://github.com/mnlazs) - @mnlazs
+* [Nikki Alderman](https://github.com/NikkiMerena) - @nikkialderman
 
 
