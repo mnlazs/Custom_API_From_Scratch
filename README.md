@@ -85,7 +85,7 @@ def insert_user():
 
 
 
-## Autores:
+## Authors:
 * [Dae Thomas](https://github.com/daeshov)
 * [Manuel Zambrado](https://github.com/mnlazs)
 * [Nikki Alderman](https://github.com/NikkiMerena)
