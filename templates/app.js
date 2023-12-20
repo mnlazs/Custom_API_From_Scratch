@@ -9,22 +9,24 @@ document.addEventListener('DOMContentLoaded', function () {
       const fechaNacimiento = document.getElementById('fechaNacimiento').value;
       
       
-      fetch('/ruta', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ clave: 'valor' })
-      });
+    //  fetch('/ruta', {
+    //    method: 'POST',
+    //    headers: {
+    //      'Content-Type': 'application/json'
+    //    },
+    //    body: JSON.stringify({ clave: 'valor' })
+    //  });
 
       
         // Enviar solicitud al backend para obtener la imagen del universo del día de la fecha seleccionada
-        fetch('/obtener_imagen', {
+        URL = "http://127.0.0.1:8000/obtener_imagen_actual"
+        fetch(URL, {
           method: 'POST',
           headers: {
+              'Accept': 'application/json, text/plain, */*',
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ nombre, fecha_nacimiento: fechaNacimiento }),
+          body: JSON.stringify({ nombre: nombre, fecha_nacimiento: fechaNacimiento }),
       })
       .then(response => response.json())
       .then(data => {
