@@ -8,6 +8,7 @@ import mysql.connector
 
 app = Flask(__name__)
 CORS(app, resources={r"/obtener_imagen": {"origins": "*"}})
+app.static_folder = 'static'
 
 def get_db_connection():
     conn = mysql.connector.connect(
