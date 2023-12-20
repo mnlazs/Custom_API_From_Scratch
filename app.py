@@ -20,8 +20,13 @@ def get_db_connection():
     return conn
 
 @app.route('/')
+def signin():
+    return render_template('login.html')
+
+@app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/tabla', methods=['POST'])
 def insert_user():
