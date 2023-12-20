@@ -53,13 +53,16 @@ The image is displayed on the user's screen.
 
   # Endpoint Details
 - /: The home route that serves the main page.
-- /tabla: POST endpoint for inserting user data.
 
- ```python
+   ```python
   @app.route('/')
 def home():
     return render_template('index.html')
 
+    
+- /tabla: POST endpoint for inserting user data.
+
+ ```python
 @app.route('/tabla', methods=['POST'])
 def insert_user():
     try:
