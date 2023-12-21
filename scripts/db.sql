@@ -7,6 +7,7 @@ USE Lost_in_Space;
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(255),
+    passcode VARCHAR (255),
     fecha_nacimiento DATE,
     url_image VARCHAR(255)
 );
