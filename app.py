@@ -154,11 +154,13 @@ def login():
     passcode = request.json.get('passcode')
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM Lost_in_Space.usuarios WHERE nombre = %s AND passcode = %s', (nombre, passcode))
-    user = cursor.fetchone()
+    
+    query = 'SELECT * FROM Lost_in_Space.usuarios WHERE nombre = %s AND passcode = %s'
+    cursor.execute(query, (nombre, passcode))
+    
+    user = cursor.fetchone()   
+    print(user) 
 
-    cursor.close()
-    conn.close()
 
     if user:
         # Usuario encontrado y contraseña coincide
