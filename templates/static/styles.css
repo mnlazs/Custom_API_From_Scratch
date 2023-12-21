@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'upheavtt';
+    src: url('../static/fonts/upheavtt.ttf') format('truetype');
+}
+
+body {
+    font-family: 'upheavtt', sans-serif;
+    
+    background-color: rgb(255, 255, 255); /* Fondo */
+    color: aqua; /* Color de texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Estilo para el contenedor principal */
+.main-container {
+    background-color: rgba(230, 60, 60, 0.1); /* Fondo semitransparente */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 80%; /* Ancho del contenedor */
+    max-width: 600px; /* Máximo ancho */
+}
+.main-container h1 {
+    font-size: 80px; 
+    color: rgb(101, 82, 196); 
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+#consultaForm label {
+    font-size: 29px; 
+    color: #ff8c00; 
+}
+
+/* fuente de los campos de entrada */
+#consultaForm input[type="text"],
+#consultaForm input[type="date"],
+#consultaForm input[type="password"] {
+    font-size: 16px; 
+    color: #000; 
+    background-color: #fff; 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+button[type="submit"] {
+    font-family: 'upheavtt', sans-serif;
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgb(27, 199, 199); /* Color de fondo normal */
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.4s, transform 0.3s, box-shadow 0.3s; /* Transición suave */
+    position: relative; /* for the after efect ::after */
+    overflow: hidden; /* Para el efecto de borde animado */
+}
+
+button[type="submit"]:hover {
+    background-color: #4cae4c; /* Cambio de color de fondo al pasar el cursor */
+    color: #ff8c00; /* Cambio de color del texto al pasar el cursor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para efecto de elevación */
+    transform: translateY(-2px); /* Mueve el botón ligeramente hacia arriba */
+}
+
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    transition: border-color 0.4s;
+    z-index: 0;
+}
+
+
+button[type="submit"]:hover::after {
+    border-color: #4cae4c; /* Color del borde al pasar el cursor */
+}
+
+@media (max-width: 600px) {
+    .main-container {
+        width: 90%;
+        margin-top: 50px;
+    }
+}

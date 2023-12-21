@@ -5,26 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let's discover what the universe looked like when you were born</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="static/styles.css">
-    <style>
-    </style>
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/templates/static/styles.css">
 </head>
 <body>
-    <h1>Let's discover what the universe looked like when you were born</h1>
-    <div class="form-container">
-        <h2>Search</h2>
-        <form id="consultaForm">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
-            <button type="submit">Consultar</button>
+    <script src="app.js"></script>
+    <div class="main-container">
+        <h1>Let's discover what the universe looked like when you were born</h1>
+        <form id="consultaForm" class="form-body">
+            <div class="form-group">
+                <label for="nombre">Name:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaNacimiento">Birth DATE:</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
+
+            <button type="submit">let's see</button>
         </form>
+
+        <div id="resultado">
+            <!-- Aquí se mostrará la imagen -->
+        </div>
     </div>
-    <div id="resultado">
-        <!-- Aquí se mostrará la imagen -->
-    </div>
-    <!-- <script src="app.js"></script> -->
+
 </body>
 </html>
