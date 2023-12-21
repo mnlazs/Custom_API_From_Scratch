@@ -1,7 +1,7 @@
 #resultado {
    display: flex;
    flex-direction: column;
-   color: #000;
+   color: black;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
 
 body {
     font-family: 'upheavtt', sans-serif;
-    
+    align-content: space-between;
     background-color: rgb(255, 255, 255); /* Fondo */
     color: aqua; /* Color de texto */
     display: flex;
@@ -36,6 +36,7 @@ body {
     color: rgb(101, 82, 196); 
     text-align: center; 
     margin-bottom: 20px; 
+    
 }
 
 #consultaForm label {

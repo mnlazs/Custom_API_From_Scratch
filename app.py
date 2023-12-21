@@ -6,7 +6,7 @@ from datetime import datetime
 import mysql.connector
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/obtener_imagen": {"origins": "*"}})
 app.static_folder = 'static'
 

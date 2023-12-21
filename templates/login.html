@@ -1,47 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script type="module" src="/static/app.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token }}">
-    
-    <script type="module" src="pages.js"></script>
 </head>
 <body>
-    <div class="form-container">
+    <div class="main-container">
         <h2>Login</h2>
         <form action="/login" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required aria-required="false">
+                <input type="text" id="login-username" name="username" required aria-required="false">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required aria-required="false">
+                <input type="password" id="login-password" name="password" required aria-required="false">
             </div>
             <button type="submit" onclick="switchtosearch()" >Login</button>
             <div id="error-message" style="display:none;">Invalid username or password.</div>
         </form>
         <a href="/forgot-password">Forgot Password?</a>
-    </div>
-    <div class="form-container">
+    
         <h2>Sign Up</h2>
         <form action="/signup" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required aria-required="false">
+                <input type="text" id="signup-username" name="username" required aria-required="false">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required aria-required="false">
+                <input type="password" id="signup-password" name="password" required aria-required="false">
             </div>
             <button type="submit" onclick="switchtosearch()" >Signup</button>
         </form>
     </div>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script>
     function switchtosearch() {
     window.location.href = "/templates/index.html";
