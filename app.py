@@ -26,7 +26,7 @@ def home():
 @app.route('/tabla', methods=['POST'])
 def insert_user():
     try:
-        data = request.json
+        data = request.json  # Usa request.json en lugar de request.data
         conn = get_db_connection()
         cursor = conn.cursor()
 
@@ -110,8 +110,7 @@ def obtener_imagen_actual():
     nombre = request.json.get('nombre')
     fecha_nacimiento = request.json.get('fecha_nacimiento')
     data = request.json
-    
-
+    print(data)
         
     if nombre is None or fecha_nacimiento is None:
     # Maneja el caso donde falta información
@@ -135,41 +134,6 @@ def obtener_imagen_actual():
     # Responder con la URL de la imagen
     return jsonify({'nombre': nombre, 'url_imagen': url_imagen})
 
-@app.route('/signup', methods=['POST'])
-@cross_origin()
-def signup():
-    nombre = request.json.get('nombre')
-    passcode = request.json.get('passcode')
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO Lost_in_Space.usuarios(nombre, passcode) VALUES (%s, %s)', (nombre, passcode))
-    conn.commit()
-    response = jsonify({'success': 'success'}), 200
-    return response
-
-@app.route('/login', methods=['POST'])
-@cross_origin()
-def login():
-    nombre = request.json.get('nombre')
-    passcode = request.json.get('passcode')
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    
-    query = 'SELECT * FROM Lost_in_Space.usuarios WHERE nombre = %s AND passcode = %s'
-    cursor.execute(query, (nombre, passcode))
-    
-    user = cursor.fetchone()   
-    print(user) 
-
-
-    if user:
-        # Usuario encontrado y contraseña coincide
-        response = jsonify({'success': 'Inicio de sesión exitoso'}), 200
-    else:
-        # Usuario no encontrado o contraseña incorrecta
-        response = jsonify({'error': 'Usuario o contraseña incorrectos'}), 401
-
-    return response
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
